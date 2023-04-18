@@ -1,1 +1,1 @@
-## ocr-app-backend
+## ocr-app-ruby
