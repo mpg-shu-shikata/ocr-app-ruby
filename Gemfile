@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 ruby '3.2.2'
 
 gem 'dotenv'
+gem 'faraday'
 gem 'functions_framework'
 gem 'googleauth'
 gem 'google-cloud-storage'
