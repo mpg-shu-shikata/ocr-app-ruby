@@ -15,7 +15,7 @@ FunctionsFramework.http 'image' do |request|
   }
 
   logger.info '========================================'
-  logger.info request
+  logger.info request.body
   logger.info '========================================'
   # content = ImageAnnotator.call('base64_string')
   # TextCompleter.call(content)
