@@ -3,8 +3,8 @@
 require 'functions_framework'
 require 'google/cloud/logging'
 
-require_relative './image_annotator'
-require_relative './text_completer'
+require './app/image_annotator'
+require './app/text_completer'
 
 FunctionsFramework.http 'image' do |request|
   logger.info '========================================'

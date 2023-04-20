@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '3.2.2'
+ruby '3.2.1'
 
 gem 'dotenv'
 gem 'functions_framework'
