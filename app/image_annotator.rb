@@ -3,7 +3,7 @@
 require 'dotenv'
 require 'google/cloud/vision'
 # TODO: 不要になったら削除する
-require 'base64'
+# require 'base64'
 
 Dotenv.load
 
@@ -13,8 +13,8 @@ class ImageAnnotator
   end
 
   def initialize(base64_str)
-    # @base64_str = base64_str
-    @base64_str = File.binread('test.jpg') # TODO: 不要になったら削除する
+    @base64_str = base64_str
+    # @base64_str = File.binread('test.jpg') # TODO: 不要になったら削除する
   end
 
   def call

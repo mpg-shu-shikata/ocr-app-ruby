@@ -10,8 +10,8 @@ FunctionsFramework.http 'image' do |request|
   logger.info '========================================'
   logger.info request.body
   logger.info '========================================'
-  content = ImageAnnotator.call('base64_string')
-  TextCompleter.call(content)
+  # content = ImageAnnotator.call('base64_string')
+  # TextCompleter.call(content)
 end
 
 FunctionsFramework.http 'pdf' do |request|
