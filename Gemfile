@@ -6,7 +6,6 @@ ruby '3.2.2'
 
 gem 'dotenv'
 gem 'functions_framework'
-gem 'googleauth'
 gem 'google-cloud-storage'
 gem 'google-cloud-vision'
 gem 'rubocop'

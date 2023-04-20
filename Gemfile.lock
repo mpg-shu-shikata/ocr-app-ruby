@@ -178,7 +178,6 @@ DEPENDENCIES
   functions_framework
   google-cloud-storage
   google-cloud-vision
-  googleauth
   rubocop
   ruby-openai
   stackdriver
