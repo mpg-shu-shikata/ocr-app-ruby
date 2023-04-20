@@ -175,7 +175,6 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
-  faraday
   functions_framework
   google-cloud-storage
   google-cloud-vision
