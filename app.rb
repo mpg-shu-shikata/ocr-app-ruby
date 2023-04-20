@@ -7,6 +7,19 @@ require './app/image_annotator'
 require './app/text_completer'
 
 FunctionsFramework.http 'image' do |request|
+  headers = {
+    'Access-Control-Allow-Origin' => '*',
+    'Access-Control-Allow-Methods' => '*',
+    'Access-Control-Allow-Headers' => '*',
+    'Access-Control-Max-Age' => '3600'
+  }
+  return [204, headers, []] if request.request_method == 'OPTIONS'
+
+  # CORS preflight request
+
+  # Handle actual request
+  return [200, headers, ['Hello, World!']]
+
   logger.info '========================================'
   logger.info request.body
   logger.info '========================================'
