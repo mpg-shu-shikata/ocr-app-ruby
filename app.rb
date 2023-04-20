@@ -13,18 +13,14 @@ FunctionsFramework.http 'image' do |request|
     'Access-Control-Allow-Headers' => '*',
     'Access-Control-Max-Age' => '3600'
   }
-  return [204, headers, []] if request.request_method == 'OPTIONS'
-
-  # CORS preflight request
-
-  # Handle actual request
-  return [200, headers, ['Hello, World!']]
 
   logger.info '========================================'
   logger.info request.body
   logger.info '========================================'
   # content = ImageAnnotator.call('base64_string')
   # TextCompleter.call(content)
+
+  [200, headers, ['Hello, World!']]
 end
 
 FunctionsFramework.http 'pdf' do |request|
