@@ -2,6 +2,7 @@
 
 require 'dotenv'
 require 'google/cloud/vision'
+# TODO: 不要になったら削除する
 require 'base64'
 
 Dotenv.load
@@ -13,14 +14,10 @@ class ImageAnnotator
 
   def initialize(base64_str)
     # @base64_str = base64_str
-    @base64_str = File.binread('test.jpg')
+    @base64_str = File.binread('test.jpg') # TODO: 不要になったら削除する
   end
 
   def call
-    client = Google::Cloud::Vision.image_annotator do |config|
-      config.credentials = ENV.fetch('CREDENTIALS_PATH')
-    end
-
     response = client.batch_annotate_images(requests:)
     response.to_h.dig(:responses, 0, :full_text_annotation, :text)
   end
@@ -28,6 +25,12 @@ class ImageAnnotator
   private
 
   attr_reader :base64_str
+
+  def client
+    Google::Cloud::Vision.image_annotator do |config|
+      config.credentials = ENV.fetch('CREDENTIALS_PATH')
+    end
+  end
 
   def requests
     [
