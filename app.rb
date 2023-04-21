@@ -15,6 +15,8 @@ FunctionsFramework.http 'image' do |request|
   logger.info '========================================'
 
   content = ImageAnnotator.call(params[:data])
+  logger.info(content:)
+
   TextCompleter.call(content)
 end
 
