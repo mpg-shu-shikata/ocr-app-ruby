@@ -3,6 +3,8 @@
 require 'dotenv'
 require 'google/cloud/vision'
 
+require 'google/cloud/logging'
+
 Dotenv.load
 
 class ImageAnnotator
@@ -15,7 +17,9 @@ class ImageAnnotator
   end
 
   def call
+    logger.info(requests)
     response = client.batch_annotate_images(requests:)
+    logger.info(response)
     response.to_h.dig(:responses, 0, :full_text_annotation, :text)
   end
 
