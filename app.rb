@@ -4,6 +4,7 @@ require 'functions_framework'
 require 'google/cloud/logging'
 
 require './app/image_annotator'
+require './app/pdf_annotator'
 require './app/text_completer'
 
 FunctionsFramework.http 'image' do |request|
