@@ -31,5 +31,15 @@ FunctionsFramework.http 'image' do |request|
 end
 
 FunctionsFramework.http 'pdf' do |request|
-  # TODO: クラスを呼び出す
+  headers = {
+    'Access-Control-Allow-Origin' => '*',
+    'Access-Control-Allow-Methods' => '*',
+    'Access-Control-Allow-Headers' => '*',
+    'Access-Control-Max-Age' => '3600'
+  }
+  params = JSON.parse(request.body.read.to_s, symbolize_names: true)
+  content = PdfAnnotator.call(params[:binaryData])
+  result = TextCompleter.call(content)
+
+  [200, headers, [result]]
 end
