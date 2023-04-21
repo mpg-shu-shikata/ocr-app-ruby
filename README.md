@@ -1,5 +1,5 @@
 ## ocr-app-ruby
-Ruby Version 3.2.1
+Ruby 3.2.1
 
 ## GCP
 - Google Cloud Function
