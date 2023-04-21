@@ -16,12 +16,12 @@ Ruby Version 3.2.1
 ## GCFのデプロイコマンド
 gcloud CLIを使用してます（[install](https://cloud.google.com/sdk/docs/install?hl=ja)）
 
-pdf
+pdf:
 ```zsh
 gcloud functions deploy pdf --runtime ruby32 --trigger-http --allow-unauthenticated
 ```
 
-image
+image:
 ```zsh
 gcloud functions deploy image --runtime ruby32 --trigger-http --allow-unauthenticated
 ```
