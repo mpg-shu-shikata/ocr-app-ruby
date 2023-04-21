@@ -19,7 +19,7 @@ FunctionsFramework.http 'image' do |request|
   logger.info '========================================'
   logger.info params
   logger.info '========================================'
-  content = ImageAnnotator.call(params[:base64data])
+  content = ImageAnnotator.call(params[:binaryData])
 
   logger.info content
 
