@@ -15,9 +15,7 @@ FunctionsFramework.http 'image' do |request|
   logger.info '========================================'
 
   content = ImageAnnotator.call(params[:data])
-  logger.info(content:)
-
-  TextCompleter.call(content)
+  TextCompleter.call(content).tap { |tc| logger.info(tc) }
 end
 
 FunctionsFramework.http 'pdf' do |request|
@@ -28,5 +26,5 @@ FunctionsFramework.http 'pdf' do |request|
   logger.info '========================================'
 
   content = PdfAnnotator.call(params[:data])
-  TextCompleter.call(content)
+  TextCompleter.call(content).tap { |tc| logger.info(tc) }
 end
