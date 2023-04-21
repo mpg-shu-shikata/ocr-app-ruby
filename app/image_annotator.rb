@@ -3,11 +3,11 @@
 require 'dotenv'
 require 'google/cloud/vision'
 
-require 'logger'
-
 Dotenv.load
 
-require 'base64'
+require_relative './http_client'
+
+VISION_API_URL = 'https://vision.googleapis.com/v1'
 
 class ImageAnnotator
   def self.call(base64_str)
@@ -15,43 +15,31 @@ class ImageAnnotator
   end
 
   def initialize(base64_str)
-    # @base64_str = base64_str
-    @base64_str = Base64.encode64(File.read('test.jpg'))
+    @base64_str = base64_str
   end
 
   def call
-    logger.info(requests)
-    response = client.batch_annotate_images(requests:)
-    logger.info(response)
-    response.to_h.dig(:responses, 0, :full_text_annotation, :text)
+    url = File.join(VISION_API_URL, "/images:annotate?key=#{ENV.fetch('CLOUD_VISION_API_KEY')}")
+    response = HttpClient.post(url, params)
+    response.dig('responses', 0, 'textAnnotations', 0, 'description') || ''
   end
 
   private
 
   attr_reader :base64_str
 
-  def logger
-    Logger.new($stderr)
-  end
-
-  def client
-    Google::Cloud::Vision.image_annotator do |config|
-      config.credentials = ENV.fetch('CREDENTIALS_PATH')
-    end
-  end
-
-  def requests
-    [
-      {
-        image: {
-          content: base64_str
-        },
-        features: [
-          { type: 'DOCUMENT_TEXT_DETECTION' }
-        ]
-      }
-    ]
+  def params
+    {
+      requests: [
+        {
+          image: {
+            content: base64_str
+          },
+          features: [
+            { type: 'DOCUMENT_TEXT_DETECTION' }
+          ]
+        }
+      ]
+    }
   end
 end
-
-binding.irb
