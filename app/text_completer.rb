@@ -45,11 +45,15 @@ class TextCompleter
       キーは必ず含ませて、指定したキーを変更はしないでください。
       JSON以外の情報は削除する。
       元のテキストに含まれる文字列だけを値として扱う。
-      該当する情報がない場合nullにする。
+      該当する情報がない場合nilにする。
 
       回答例は以下の通りです。
       {
-        patientName: '山田 太郎',
+        patient: {
+          name: '山田 太郎',
+          birthday: '1994-11-12',
+          sex: '男'
+        },
         doctorName: '鈴木 一郎',
         medicalInstitution: {
           name: 'やくばと病院',
