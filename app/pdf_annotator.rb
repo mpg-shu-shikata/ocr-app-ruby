@@ -16,9 +16,7 @@ class PdfAnnotator
   end
 
   def initialize(base64_str)
-    # TODO: フロントとの繋ぎ込みが完了したら切り替える
-    # @base64_str = base64_str
-    @base64_str = Base64.encode64(File.read('test.pdf'))
+    @base64_str = base64_str
     @file_name = "#{SecureRandom.uuid}.pdf"
     @path = File.join('./', file_name)
   end
