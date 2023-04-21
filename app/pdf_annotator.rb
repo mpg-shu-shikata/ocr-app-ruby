@@ -8,8 +8,8 @@ require "google/cloud/storage"
 Dotenv.load
 
 class PdfAnnotator
-  CREDENTIAL_FILE_PATH = './credentials.json'.freeze
-  BUCKET_NAME = 'ocr-app-bucket-for-pdf'.freeze
+  CREDENTIAL_FILE_PATH = './credentials.json'
+  BUCKET_NAME = 'ocr-app-bucket-for-pdf'
 
   def self.call(base64_str)
     new(base64_str).call
@@ -62,7 +62,7 @@ class PdfAnnotator
         input_config: {
           mime_type: 'application/pdf',
           gcs_source: {
-            uri: uri
+            uri:
           }
         },
         features: [
@@ -79,6 +79,6 @@ class PdfAnnotator
   end
 
   def extract_pdf_text(google_vision_response)
-    google_vision_response.dig(:responses, 0, :responses, 0, :full_text_annotation, :text)
+    google_vision_response.dig(:responses, 0, :responses, 0, :full_text_annotation, :text) || ''
   end
 end
