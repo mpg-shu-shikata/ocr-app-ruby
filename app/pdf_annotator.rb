@@ -31,7 +31,7 @@ class PdfAnnotator
     bucket.create_file(path, file_name)
 
     response = client.batch_annotate_files(requests: build_params("gs://ocr-app-bucket-for-pdf/#{file_name}"))
-    response.responses.first.responses.first.full_text_annotation.text
+    extract_pdf_text(response.to_h)
   end
 
   private
@@ -66,5 +66,9 @@ class PdfAnnotator
         ]
       }
     ]
+  end
+
+  def extract_pdf_text(google_vision_response)
+    google_vision_response.dig(:responses, 0, :responses, 0, :full_text_annotation, :text)
   end
 end
