@@ -3,9 +3,11 @@
 require 'dotenv'
 require 'google/cloud/vision'
 
-require 'google/cloud/logging'
+require 'logger'
 
 Dotenv.load
+
+require 'base64'
 
 class ImageAnnotator
   def self.call(base64_str)
@@ -13,7 +15,8 @@ class ImageAnnotator
   end
 
   def initialize(base64_str)
-    @base64_str = base64_str
+    # @base64_str = base64_str
+    @base64_str = Base64.encode64(File.read('test.jpg'))
   end
 
   def call
@@ -26,6 +29,10 @@ class ImageAnnotator
   private
 
   attr_reader :base64_str
+
+  def logger
+    Logger.new($stderr)
+  end
 
   def client
     Google::Cloud::Vision.image_annotator do |config|
@@ -46,3 +53,5 @@ class ImageAnnotator
     ]
   end
 end
+
+binding.irb
