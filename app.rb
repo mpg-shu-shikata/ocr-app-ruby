@@ -14,8 +14,10 @@ FunctionsFramework.http 'image' do |request|
     'Access-Control-Max-Age' => '3600'
   }
 
+  params = JSON.parse(request.body.read.to_s, symbolize_names: true)
+
   logger.info '========================================'
-  logger.info request.body
+  logger.info params
   logger.info '========================================'
   # content = ImageAnnotator.call('base64_string')
   # TextCompleter.call(content)
