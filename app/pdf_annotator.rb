@@ -43,7 +43,7 @@ class PdfAnnotator
 
   def google_storage_bucket
     storage = Google::Cloud::Storage.new(
-      credentials: ENV.fetch('CREDENTIAL_FILE_PATH')
+      credentials: ENV.fetch('CREDENTIALS_PATH')
     )
     storage.bucket BUCKET_NAME
   end
