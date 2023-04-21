@@ -2,8 +2,7 @@
 
 require 'dotenv'
 require 'google/cloud/vision'
-require 'base64'
-require "google/cloud/storage"
+require 'google/cloud/storage'
 
 Dotenv.load
 
