@@ -17,7 +17,7 @@ class PdfAnnotator
   def initialize(base64_str)
     @base64_str = base64_str
     @file_name = "#{SecureRandom.uuid}.pdf"
-    @path = File.join('./', file_name)
+    @path = File.join('tmp', file_name)
   end
 
   def call
