@@ -7,7 +7,6 @@ require 'google/cloud/storage'
 Dotenv.load
 
 class PdfAnnotator
-  CREDENTIAL_FILE_PATH = './credentials.json'
   BUCKET_NAME = 'ocr-app-bucket-for-pdf'
 
   def self.call(base64_str)
@@ -44,7 +43,7 @@ class PdfAnnotator
 
   def google_storage_bucket
     storage = Google::Cloud::Storage.new(
-      credentials: CREDENTIAL_FILE_PATH
+      credentials: ENV.fetch('CREDENTIAL_FILE_PATH')
     )
     storage.bucket BUCKET_NAME
   end
