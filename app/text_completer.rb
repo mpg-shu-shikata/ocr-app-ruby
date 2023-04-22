@@ -2,7 +2,6 @@
 
 require 'dotenv'
 require 'openai'
-require 'logger'
 
 Dotenv.load
 
@@ -20,9 +19,7 @@ class TextCompleter
 
     client = OpenAI::Client.new(access_token: ENV.fetch('OPENAI_API_KEY'))
     response = client.chat(parameters:)
-    JSON.parse(response.dig('choices', 0, 'message', 'content'), symbolize_names: true)
-  rescue JSON::ParserError => e
-    log_exception(exception)
+    response.dig('choices', 0, 'message', 'content')
   end
 
   private
@@ -75,13 +72,5 @@ class TextCompleter
         ]
       }
     CONTENT
-  end
-
-  def logger
-    Logger.new($stderr)
-  end
-
-  def log_exception(exception)
-    logger.error("#{exception.class.name}: #{exception.message}\n#{exception.backtrace.join("\n")}")
   end
 end
