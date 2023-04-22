@@ -43,7 +43,7 @@ class TextCompleter
       {
         patient: {
           name: 患者の氏名を文字列で入力する,
-          birthday: 患者の生年月日を'1994-11-12'のように西暦表記で入力する,
+          birthday: 患者の生年月日を西暦表記で入力する,
           sex: 男はmail、女はfemail、どちらにも属さない場合はotherで記載しなさい
         }
         doctorName: 医師、保険医の氏名を文字列で入力する,
@@ -53,7 +53,7 @@ class TextCompleter
           address: 医療機関の住所、所在を入力する,
           tel: 医療機関の電話番号を入力する
         },
-        dispensingDate: 調剤日を'2023-01-15'のように西暦表記で記載する,
+        dispensingDate: 発行日または調剤日を西暦表記で記載する,
         medicines: [
           {
             name: 薬の名称を文字列で記載する,
@@ -84,7 +84,7 @@ class TextCompleter
           address: '東京都中央区銀座1-2-3',
           tel: '03-1234-5678'
         },
-        dispensingDate: '2022-01-15',
+        dispensingDate: '2023-01-15',
         medicines: [
           {
             name: 'ロキソニンEXゲル25mg',
