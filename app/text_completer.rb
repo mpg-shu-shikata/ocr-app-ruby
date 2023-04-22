@@ -44,7 +44,7 @@ class TextCompleter
         patient: {
           name: 患者の氏名を文字列で入力する,
           birthday: 「生年月日」を「西暦」で入力する,
-          sex: 男はmail、女はfemail、どちらにも属さない場合はotherで入力しなさい
+          sex: 男はmale、女はfemale、どちらにも属さない場合はotherで入力しなさい
         }
         medicalInstitution: {
           name: 処方せんを発行した医療機関を文字列で入力する,
@@ -75,7 +75,7 @@ class TextCompleter
         patient: {
           name: '山田 太郎',
           birthday: '1994-11-12',
-          sex: 'femail'
+          sex: 'female'
         },
         medicalInstitution: {
           name: 'やくばと病院',
