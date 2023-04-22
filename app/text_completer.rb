@@ -40,6 +40,29 @@ class TextCompleter
 
   def system_content
     <<~CONTENT
+      {
+        patient: {
+          name: 患者の氏名を文字列で入力する,
+          birthday: 患者の生年月日を'1994-11-12'のように西暦表記で入力する,
+          sex: 男はmail、女はfemail、どちらにも属さない場合はotherで記載しなさい
+        }
+        doctorName: 医師、保険医の氏名を文字列で入力する,
+        medicalInstitution: {
+          name: 処方せんを発行した医療機関を文字列で入力する,
+          consultation_category: 医療機関の診療科を文字列で入力する,
+          address: 医療機関の住所、所在を入力する,
+          tel: 医療機関の電話番号を入力する
+        },
+        dispensingDate: 調剤日を'2023-01-15'のように西暦表記で記載する,
+        medicines: [
+          {
+            name: 薬の名称を文字列で記載する,
+            usage: '1日3回毎食後'のように用法用量を文字列で記載する,
+            feature: 薬の効果・効能を文字列で記載する
+          }
+        ]
+      }
+
       【注意点】
       JSONのフォーマットで必ず回答してください。
       キーは必ず含ませて、指定したキーを変更はしないでください。
@@ -49,7 +72,11 @@ class TextCompleter
 
       回答例は以下の通りです。
       {
-        patientName: '山田 太郎',
+        patient: {
+          name: '山田 太郎',
+          birthday: '1994-11-12',
+          sex: 'femail'
+        }
         doctorName: '鈴木 一郎',
         medicalInstitution: {
           name: 'やくばと病院',
