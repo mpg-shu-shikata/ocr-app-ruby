@@ -22,20 +22,12 @@ class TextCompleter
     response = client.chat(parameters:)
     JSON.parse(response.dig('choices', 0, 'message', 'content'), symbolize_names: true)
   rescue JSON::ParserError => e
-    log_exception(e)
+    log_exception(exception)
   end
 
   private
 
   attr_reader :content
-
-  def logger
-    Logger.new($stderr)
-  end
-
-  def log_exception(exception)
-    logger.error("#{exception.class.name}: #{exception.message}\n#{exception.backtrace.join("\n")}")
-  end
 
   def parameters
     {
@@ -61,9 +53,6 @@ class TextCompleter
       回答例は以下の通りです。
       {
         patientName: '山田 太郎',
-        patientBirthday: '1994-11-12',
-        patientSex: '男',
-        patientName: '山田 太郎',
         doctorName: '鈴木 一郎',
         medicalInstitution: {
           name: 'やくばと病院',
@@ -86,5 +75,13 @@ class TextCompleter
         ]
       }
     CONTENT
+  end
+
+  def logger
+    Logger.new($stderr)
+  end
+
+  def log_exception(exception)
+    logger.error("#{exception.class.name}: #{exception.message}\n#{exception.backtrace.join("\n")}")
   end
 end
