@@ -20,6 +20,9 @@ class TextCompleter
     client = OpenAI::Client.new(access_token: ENV.fetch('OPENAI_API_KEY'))
     response = client.chat(parameters:)
     extracted_response = response.dig('choices', 0, 'message', 'content')
+
+    binding.irb
+
     JSON.parse(extracted_response)
   end
 
@@ -71,7 +74,7 @@ class TextCompleter
       キーは必ず含ませて、指定したキーを変更はしないでください。
       JSON以外の情報は削除する。
       元のテキストに含まれる文字列だけを値として扱う。
-      該当する情報がない場合nilにする。
+      該当する情報がない場合`null`にする。
 
       回答例は以下の通りです。
       {

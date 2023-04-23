@@ -7,4 +7,4 @@ require_relative './app/text_completer'
 
 str = Base64.encode64(File.read('test.jpg'))
 content = ImageAnnotator.call(str)
-result = TextCompleter.call(content)
+TextCompleter.call(content)
