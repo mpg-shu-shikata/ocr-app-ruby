@@ -19,7 +19,8 @@ class TextCompleter
 
     client = OpenAI::Client.new(access_token: ENV.fetch('OPENAI_API_KEY'))
     response = client.chat(parameters:)
-    response.dig('choices', 0, 'message', 'content')
+    a = response.dig('choices', 0, 'message', 'content')
+    binding.irb
   end
 
   private
@@ -41,24 +42,24 @@ class TextCompleter
   def system_content
     <<~CONTENT
       {
-        patient: {
-          name: 患者の氏名を文字列で入力する,
-          birthday: 「生年月日」を「西暦」で入力する,
-          sex: 男はmale、女はfemale、どちらにも属さない場合はotherで入力しなさい
+        "patient": {
+          "name": 患者の氏名を文字列で入力する,
+          "birthday": 「生年月日」を「西暦」で入力する,
+          "sex": 男はmale、女はfemale、どちらにも属さない場合はotherで入力しなさい
         }
-        medicalInstitution: {
-          name: 処方せんを発行した医療機関を文字列で入力する,
-          consultation_category: 医療機関の診療科を文字列で入力する,
-          address: 医療機関の住所、所在を入力する,
-          tel: 医療機関の電話番号を入力する
-          doctorName: 医師、保険医の氏名を文字列で入力する,
+        "medicalInstitution": {
+          "name": 処方せんを発行した医療機関を文字列で入力する,
+          "consultation_category": 医療機関の診療科を文字列で入力する,
+          "address": 医療機関の住所、所在を入力する,
+          "tel": 医療機関の電話番号を入力する
+          "doctorName": 医師、保険医の氏名を文字列で入力する,
         },
-        dispensingDate: 「発行日」または「調剤日」を「西暦」で入力する,
-        medicines: [
+        "dispensingDate": 「発行日」または「調剤日」を「西暦」で入力する,
+        "medicines": [
           {
-            name: 薬の名称を文字列で入力する,
-            usage: '1日3回毎食後'のように用法用量を文字列で入力する,
-            feature: 薬の効果・効能を文字列で入力する
+            "name": 薬の名称を文字列で入力する,
+            "usage": '1日3回毎食後'のように用法用量を文字列で入力する,
+            "feature": 薬の効果・効能を文字列で入力する
           }
         ]
       }
@@ -72,29 +73,29 @@ class TextCompleter
 
       回答例は以下の通りです。
       {
-        patient: {
-          name: '山田 太郎',
-          birthday: '1994-11-12',
-          sex: 'female'
+        "patient": {
+          "name": "山田 太郎",
+          "birthday": "1994-11-12",
+          "sex": "female"
         },
-        medicalInstitution: {
-          name: 'やくばと病院',
-          consultation_category: '整形外科',
-          address: '東京都中央区銀座1-2-3',
-          tel: '03-1234-5678',
-          doctorName: '鈴木 一郎'
+        "medicalInstitution": {
+          "name": "やくばと病院",
+          "consultation_category": "整形外科",
+          "address": "東京都中央区銀座1-2-3",
+          "tel": "03-1234-5678",
+          "doctorName": "鈴木 一郎"
         },
-        dispensingDate: '2023-01-15',
-        medicines: [
+        "dispensingDate": "2023-01-15",
+        "medicines": [
           {
-            name: 'ロキソニンEXゲル25mg',
-            usage: '1日3回毎食後',
-            feature: '熱を下げ、痛みを和らげ、炎症を抑えます。'
+            "name": "ロキソニンEXゲル25mg",
+            "usage": "1日3回毎食後",
+            "feature": "熱を下げ、痛みを和らげ、炎症を抑えます。"
           },
           {
-            name: 'コリオパンカプセル5mg',
-            usage: '1日3回毎食後',
-            feature: '内蔵平滑筋のけいれんを抑えたり、胃酸の分泌を抑えることにより、腹痛を和らげます。'
+            "name": "コリオパンカプセル5mg",
+            "usage": "1日3回毎食後",
+            "feature": "内蔵平滑筋のけいれんを抑えたり、胃酸の分泌を抑えることにより、腹痛を和らげます。"
           }
         ]
       }
