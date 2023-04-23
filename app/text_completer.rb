@@ -50,7 +50,7 @@ class TextCompleter
         "medicalInstitution": {
           "name": 処方せんを発行した医療機関を文字列で入力する,
           "code": 医療機関コードを文字列で入力する,
-          "consultation_category": 医療機関の診療科を文字列で入力する,
+          "consultationCategory": 医療機関の診療科を文字列で入力する,
           "address": 医療機関の住所、所在を入力する,
           "tel": 医療機関の電話番号を入力する
           "doctorName": 医師、保険医の氏名を文字列で入力する,
@@ -61,7 +61,7 @@ class TextCompleter
             "name": 薬の名称を文字列で入力する,
             "usage": '1日3回毎食後'のように用法用量を文字列で入力する,
             "feature": 薬の効果・効能を文字列で入力する,
-            "jan_code": 13桁もしくは8桁の半角数字を文字列に変換して入力する
+            "janCode": 13桁もしくは8桁の半角数字を文字列に変換して入力する
           }
         ]
       }
@@ -83,7 +83,7 @@ class TextCompleter
         "medicalInstitution": {
           "name": "やくばと病院",
           "code": "12345",
-          "consultation_category": "整形外科",
+          "consultationCategory": "整形外科",
           "address": "東京都中央区銀座1-2-3",
           "tel": "03-1234-5678",
           "doctorName": "鈴木 一郎"
@@ -94,13 +94,13 @@ class TextCompleter
             "name": "ロキソニンEXゲル25mg",
             "usage": "1日3回毎食後",
             "feature": "熱を下げ、痛みを和らげ、炎症を抑えます。",
-            "jan_code": "4987107610867"
+            "janCode": "4987107610867"
           },
           {
             "name": "コリオパンカプセル5mg",
             "usage": "1日3回毎食後",
             "feature": "内蔵平滑筋のけいれんを抑えたり、胃酸の分泌を抑えることにより、腹痛を和らげます。",
-            "jan_code": "4987107612345"
+            "janCode": "4987107612345"
           }
         ]
       }
