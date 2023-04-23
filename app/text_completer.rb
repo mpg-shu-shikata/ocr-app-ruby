@@ -20,9 +20,6 @@ class TextCompleter
     client = OpenAI::Client.new(access_token: ENV.fetch('OPENAI_API_KEY'))
     response = client.chat(parameters:)
     extracted_response = response.dig('choices', 0, 'message', 'content')
-
-    binding.irb
-
     JSON.parse(extracted_response)
   end
 
