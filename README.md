@@ -4,6 +4,7 @@ Ruby 3.2.1
 ## GCP
 - Google Cloud Function
 - Google Cloud Storage
+- Google Secret Manager
 - Google Form
 - Google App Script
 - Google Cloud Logging
